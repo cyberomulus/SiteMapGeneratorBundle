@@ -1,0 +1,31 @@
+{
+	"name" : "cyberomulus/sitemap-generator-bundle",
+	"type" : "symfony-bundle",
+	"description" : "Generate a sitemap for your Symfony website",
+	"keywords" : [
+		"symfony",
+		"sitemap"
+	],
+	"homepage" : "https://github.com/cyberomulus/SiteMapGeneratorBundle",
+	"support" : {
+		"email" : "me@cyberomulus.me",
+		"issues" : "https://github.com/cyberomulus/SiteMapGeneratorBundle/issues",
+		"source" : "https://github.com/cyberomulus/SiteMapGeneratorBundle"
+	},
+	"license" : "MIT",
+	"authors" : [{
+			"name" : "Brack Romain",
+			"email" : "me@cyberomulus.me",
+			"homepage" : "http://www.cyberomulus.me"
+		}
+	],
+	"require" : {
+		"php" : "^7.1.3"
+	},
+	"autoload" : {
+		"psr-4" : {
+			"Cyberomulus\\SiteMapGenertorBundle\\" : ""
+		}
+	},
+	"minimum-stability" : "stable"
+}
