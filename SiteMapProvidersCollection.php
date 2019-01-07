@@ -11,23 +11,27 @@
 namespace Cyberomulus\SiteMapGeneratorBundle;
 
 /**
- * This interface must be implemented by sitemap providers to self-declare
- * 
+ * This class/service contain all SiteMapProvider
+ *
  * @author	Brack Romain <http://www.cyberomulus.me>
  */
-interface SiteMapProvider
+class SiteMapProvidersCollection
 	{
 	/**
-	 * @return	string		The sitemap name (used for the route name and on url)
-	 * 
-	 * @author	Brack Romain <http://www.cyberomulus.me>
+	 * @var	array	Array of SiteMapProvider
 	 */
-	public function getSiteMapName(): string;
+	private $providers;
 	
 	/**
-	 * @return	\DateTime	The last modification, null for not use
+	 * @param	iterable	$providers
+	 * 				List of services tagged 'cyberomulus_sitemapgenerator.sitemap_provider'.
+	 * 				(Dynamically loaded)
 	 * 
 	 * @author	Brack Romain <http://www.cyberomulus.me>
 	 */
-	public function getSiteMapLastModification();
+	public function __construct(iterable $providers)
+		{
+		foreach ($providers as $value)
+			$this->providers[] = $value;
+		}
 	}
