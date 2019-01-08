@@ -1,4 +1,5 @@
 # SiteMapGeneratorBundle
+
 Generate a sitemap for your Symfony website
 
 ## Installation
@@ -32,7 +33,6 @@ Then, enable the bundle by adding it to the list of registered bundles
 in the `app/AppKernel.php` file of your project:
 
 ```php
-<?php
 // app/AppKernel.php
 
 // ...
@@ -51,7 +51,9 @@ class AppKernel extends Kernel
     // ...
 }
 ```
+
 ## How to create a site map ?
+
 All services and controllers can provide a sitemap.  
 For that, it is enough that it implements the interface "Cyberomulus\SiteMapGeneratorBundle\SiteMapProvider".
 
@@ -69,12 +71,12 @@ class BlogController extends AbstractController implements SiteMapProvider
     
 }
 ```
+
 2 methods must be implemented:
 * `getSiteMapName(): string`: must return the sitemap name (used for the route name and on url)
 * `getSiteMapLastModification()`: must return the last modification, null for not use
 
 ```php
-<?php
 // src/Controller/BlogController.php
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -93,4 +95,15 @@ class BlogController extends AbstractController implements SiteMapProvider
     	return null; // or a datetime object
     }
 }
+```
+It is now registered as sitemap, you can check it with the command ``:
+
+```console
+$ php bin/console cyberomulus:siteMapGenerator:providers
+
+List of known sitemap providers:
+Name: blog_sitemap
+Last modification Date: null
+
+$ 
 ```

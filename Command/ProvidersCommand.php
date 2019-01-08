@@ -62,7 +62,7 @@ class ProvidersCommand extends Command
 			return;
 			}
 		
-		$ouput->writeln(["List of known sitemap providers", ""]);
+		$ouput->writeln(["List of known sitemap providers:", " "]);
 		
 		foreach ($this->providersCollection->getProviders() as $providers)
 			{
