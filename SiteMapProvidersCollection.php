@@ -34,4 +34,12 @@ class SiteMapProvidersCollection
 		foreach ($providers as $value)
 			$this->providers[] = $value;
 		}
+	
+	/**
+	 * @return	iterable	List of sitemap providers
+	 */
+	public function getProviders(): iterable
+		{
+		return $this->providers;
+		}
 	}

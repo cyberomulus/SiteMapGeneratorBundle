@@ -11,5 +11,7 @@
     	<service id="Cyberomulus\SiteMapGeneratorBundle\SiteMapProvidersCollection">
             <argument type="tagged" tag="cyberomulus_sitemapgenerator.sitemap_provider" />
         </service>
+        
+        <service id="Cyberomulus\SiteMapGeneratorBundle\Command\ProvidersCommand" />
     </services>
 </container>
