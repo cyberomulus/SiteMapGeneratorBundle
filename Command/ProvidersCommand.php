@@ -69,10 +69,10 @@ class ProvidersCommand extends Command
 		foreach ($this->providersCollection->getProviders() as $provider)
 			{
 			if ($provider instanceof SiteMapProvider)
-				{
+				{					
 				$output->writeln([
 							"Name: " . $provider->getSiteMapName(),
-					"Last modification Date: " . (is_null($this->$provider->getSiteMapLastModification()) ? "null" : $this->$provider->getSiteMapLastModification()->format('Y-m-d H:i:s')),
+							"Last modification Date: " . (is_null($provider->getSiteMapLastModification()) ? "null" : $provider->getSiteMapLastModification()->format('Y-m-d H:i:s')),
 							" "
 							]);
 				}
