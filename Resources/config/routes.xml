@@ -6,5 +6,7 @@
 
     <route id="cyberomulus_sitemapgenerator" 
     		controller="Cyberomulus\SiteMapGeneratorBundle\Controller\SitemapController::index"
-    		path="/sitemap.xml" />
+    		path="/sitemap.xml">
+		<!-- settings -->
+    </route>
 </routes>
