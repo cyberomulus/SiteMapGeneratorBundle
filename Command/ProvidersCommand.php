@@ -57,8 +57,8 @@ class ProvidersCommand extends Command
 	 * @author	Brack Romain <http://www.cyberomulus.me>
 	 */
 	protected function execute(InputInterface $input, OutputInterface $output)
-	{$output->writeln([get_class($this->providersCollection)]);
-		if (count($this->providersCollection) == 0)
+	{$output->writeln([get_class($this->providersCollection->())]);
+		if (count($this->providersCollection->getProviders()) == 0)
 			{
 			$output->writeln(["No declared sitemap provider.","See README.md to create one."]);
 			return;
@@ -66,13 +66,13 @@ class ProvidersCommand extends Command
 		
 		$ouput->writeln(["List of known sitemap providers:", " "]);
 		
-		foreach ($this->providersCollection->getProviders() as $providers)
+		foreach ($this->providersCollection->getProviders() as $provider)
 			{
-			if ($providers instanceof SiteMapProvider)
+			if ($provider instanceof SiteMapProvider)
 				{
 				$output->writeln([
-							"Name: " . $providers->getSiteMapName(),
-							"Last modification Date: " . $providers->getSiteMapLastModification(),
+							"Name: " . $provider->getSiteMapName(),
+							"Last modification Date: " . $provider->getSiteMapLastModification(),
 							" "
 							]);
 				}
