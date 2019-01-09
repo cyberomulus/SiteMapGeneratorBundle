@@ -12,8 +12,9 @@ namespace Cyberomulus\SiteMapGeneratorBundle\DependencyInjection;
 
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Cyberomulus\SiteMapGeneratorBundle\SiteMapProvider;
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
+use Symfony\Component\Config\FileLocator;
+use Cyberomulus\SiteMapGeneratorBundle\SiteMapProvider;
 
 /**
  * @author	Brack Romain <http://www.cyberomulus.me>
