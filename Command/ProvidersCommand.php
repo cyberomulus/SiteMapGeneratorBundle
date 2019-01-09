@@ -57,7 +57,7 @@ class ProvidersCommand extends Command
 	 * @author	Brack Romain <http://www.cyberomulus.me>
 	 */
 	protected function execute(InputInterface $input, OutputInterface $output)
-		{
+	{$output->writeln([$this->providersCollection::class]);
 		if (count($this->providersCollection) == 0)
 			{
 			$output->writeln(["No declared sitemap provider.","See README.md to create one."]);
