@@ -41,6 +41,8 @@ class ProvidersCommand extends Command
 	public function __construct(SiteMapProvidersCollection $providersCollection)
 		{
 		$this->providersCollection = $providersCollection;
+		
+		parent::__construct();
 		}
 	
 	/**
@@ -56,21 +58,21 @@ class ProvidersCommand extends Command
 	 */
 	protected function execute(InputInterface $input, OutputInterface $output)
 		{
-		if (count($this->providersCollection) == 0)
+		if (count($this->providersCollection->getProviders()) == 0)
 			{
 			$output->writeln(["No declared sitemap provider.","See README.md to create one."]);
 			return;
 			}
 		
-		$ouput->writeln(["List of known sitemap providers:", " "]);
+		$output->writeln(["List of known sitemap providers:", " "]);
 		
-		foreach ($this->providersCollection->getProviders() as $providers)
+		foreach ($this->providersCollection->getProviders() as $provider)
 			{
-			if ($providers instanceof SiteMapProvider)
-				{
+			if ($provider instanceof SiteMapProvider)
+				{					
 				$output->writeln([
-							"Name: " . $providers->getSiteMapName(),
-							"Last modification Date: " . $providers->getSiteMapLastModification(),
+							"Name: " . $provider->getSiteMapName(),
+							"Last modification Date: " . (is_null($provider->getSiteMapLastModification()) ? "null" : $provider->getSiteMapLastModification()->format('Y-m-d H:i:s')),
 							" "
 							]);
 				}
