@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<routes>
 
-    <route id="blog_list" controller="App\Controller\BlogController::list" path="/blog" >
-        <!-- settings -->
-    </route>
+<routes xmlns="http://symfony.com/schema/routing"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
 
-    <route id="blog_show" controller="App\Controller\BlogController::show" path="/blog/{slug}">
-        <!-- settings -->
+    <route id="cyberomulus_sitemapgenerator" 
+    		controller="Cyberomulus\SiteMapGeneratorBundle\Controller\SitemapController::index"
+    		path="/sitemap.xml">
     </route>
 </routes>
