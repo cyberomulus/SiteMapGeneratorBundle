@@ -72,7 +72,7 @@ class ProvidersCommand extends Command
 				{
 				$output->writeln([
 							"Name: " . $provider->getSiteMapName(),
-							"Last modification Date: " . $provider->getSiteMapLastModification(),
+							"Last modification Date: " . (is_null($this->$provider->getSiteMapLastModification()) ? $this->$provider->getSiteMapLastModification() : "null"),
 							" "
 							]);
 				}
