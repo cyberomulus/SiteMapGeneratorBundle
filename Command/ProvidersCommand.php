@@ -41,6 +41,8 @@ class ProvidersCommand extends Command
 	public function __construct(SiteMapProvidersCollection $providersCollection)
 		{
 		$this->providersCollection = $providersCollection;
+		
+		parent::__construct();
 		}
 	
 	/**
