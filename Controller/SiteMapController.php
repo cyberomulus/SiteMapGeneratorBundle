@@ -18,7 +18,7 @@ use Symfony\Component\HttpFoundation\Response;
  * 
  * @author	Brack Romain <http://www.cyberomulus.me>
  */
-class SitemapController extends AbstractController
+class SiteMapController extends AbstractController
 	{
 	/**
 	 * Route for display the sitemap index
