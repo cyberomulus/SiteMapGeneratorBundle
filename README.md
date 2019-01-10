@@ -108,6 +108,7 @@ class BlogController extends AbstractController implements SiteMapProvider
     }
 }
 ```
+
 It is now registered as sitemap, you can check it with the command ``:
 
 ```console
@@ -119,3 +120,5 @@ Last modification Date: null
 
 $ 
 ```
+
+And the sitemap index is available at the path : /sitemap.xml

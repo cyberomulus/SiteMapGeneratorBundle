@@ -5,7 +5,12 @@
     xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
 
     <route id="cyberomulus_site_map_generator_index" 
-    		controller="Cyberomulus\SiteMapGeneratorBundle\Controller\SiteMapController::index"
+    		controller="Cyberomulus\SiteMapGeneratorBundle\Controller\SiteMapController::displayIndex"
     		path="/sitemap.xml">
+    </route>
+    
+    <route id="cyberomulus_site_map_generator_site_map" 
+    		controller="Cyberomulus\SiteMapGeneratorBundle\Controller\SiteMapController::displaySiteMap"
+    		path="/sitemap_{name}.xml">
     </route>
 </routes>
