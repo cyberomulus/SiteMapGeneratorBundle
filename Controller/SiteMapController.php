@@ -29,16 +29,16 @@ class SiteMapController extends AbstractController
 	 * 
 	 * @author	Brack Romain <http://www.cyberomulus.me>
 	 */
-	public function displayIndex(SiteMapProvidersCollection $ProvidersCollection)
+	public function displayIndex(SiteMapProvidersCollection $providersCollection)
 		{
 		$index = new SiteMapIndex();
 		
-		foreach ($ProvidersCollection->getProviders() as $provider)
+		foreach ($providersCollection->getProviders() as $provider)
 			{
 			$url = $this->generateUrl('cyberomulus_site_map_generator_site_map',
-									array('name' => $provider->cyberomulus_site_map_generator_site_map()));
+									array('name' => $provider->getSiteMapName()));
 				
-			$index->addSiteMapEntry(new SiteMapEntry($url));
+			$index->addSiteMapEntry(new SiteMapEntry($url, $provider->getSiteMapLastModification()));
 			}
 		
 		$formatter = new XMLFormatter();

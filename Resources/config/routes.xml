@@ -4,13 +4,11 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
 
-    <route id="cyberomulus_site_map_generator_index" 
-    		controller="Cyberomulus\SiteMapGeneratorBundle\Controller\SiteMapController::displayIndex"
-    		path="/sitemap.xml">
+    <route id="cyberomulus_site_map_generator_index" path="/sitemap.xml">
+    	<default key="_controller">Cyberomulus\SiteMapGeneratorBundle\Controller\SiteMapController::displayIndex</default>
     </route>
     
-    <route id="cyberomulus_site_map_generator_site_map" 
-    		controller="Cyberomulus\SiteMapGeneratorBundle\Controller\SiteMapController::displaySiteMap"
-    		path="/sitemap_{name}.xml">
+    <route id="cyberomulus_site_map_generator_site_map" path="/sitemap_{name}.xml">
+    	<default key="_controller">Cyberomulus\SiteMapGeneratorBundle\Controller\SiteMapController::displaySiteMap</default>
     </route>
 </routes>

@@ -29,7 +29,7 @@ class CyberomulusSiteMapGeneratorExtension extends Extension
 		// Adds the tag on all services implementing the interface Cyberomulus\SiteMapGeneratorBundle\SiteMapProvider
 		$container->registerForAutoconfiguration(SiteMapProvider::class)->addTag('cyberomulus_sitemapgenerator.sitemap_provider');
 		
-		// Adds internals routes and services in container
+		// Adds internals services in container
 		$loader = new XmlFileLoader($container,	new FileLocator(__DIR__.'/../Resources/config'));
 		$loader->load('services.xml');
 		}
