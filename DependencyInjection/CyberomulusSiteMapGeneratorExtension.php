@@ -15,7 +15,6 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 use Symfony\Component\Config\FileLocator;
 use Cyberomulus\SiteMapGeneratorBundle\SiteMapProvider;
-use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 
 /**
  * @author	Brack Romain <http://www.cyberomulus.me>

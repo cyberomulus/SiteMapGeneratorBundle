@@ -52,6 +52,18 @@ class AppKernel extends Kernel
 }
 ```
 
+### Import the bundle routes
+
+You must import the bundle routes.  
+For this, copy these lines into your routes configuration file:
+
+```yaml
+# config/routes.yaml
+
+cyberomulus_sitemapgenerator:
+    resource: '@CyberomulusSiteMapGeneratorBundle/Resources/config/routes.xml'
+```
+
 ## How to create a site map ?
 
 All services and controllers can provide a sitemap.  
