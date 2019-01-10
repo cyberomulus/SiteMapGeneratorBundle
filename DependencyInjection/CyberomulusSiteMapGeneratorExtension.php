@@ -15,6 +15,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 use Symfony\Component\Config\FileLocator;
 use Cyberomulus\SiteMapGeneratorBundle\SiteMapProvider;
+use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 
 /**
  * @author	Brack Romain <http://www.cyberomulus.me>
@@ -29,9 +30,10 @@ class CyberomulusSiteMapGeneratorExtension extends Extension
 		// Adds the tag on all services implementing the interface Cyberomulus\SiteMapGeneratorBundle\SiteMapProvider
 		$container->registerForAutoconfiguration(SiteMapProvider::class)->addTag('cyberomulus_sitemapgenerator.sitemap_provider');
 		
-		// Adds internals services in container
+		// Adds internals routes and services in container
 		$loader = new XmlFileLoader($container,	new FileLocator(__DIR__.'/../Resources/config'));
 		$loader->load('routes.xml');
+		$loader = new YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
 		$loader->load('services.xml');
 		}
 	}

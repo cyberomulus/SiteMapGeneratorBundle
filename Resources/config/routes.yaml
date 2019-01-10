@@ -1,0 +1,3 @@
+cyberomulus_sitemapgenerator:
+    path: /sitemap.xml
+    controller: Cyberomulus\SiteMapGeneratorBundle\Controller\SitemapController::index
