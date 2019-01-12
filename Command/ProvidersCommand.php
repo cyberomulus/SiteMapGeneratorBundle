@@ -14,7 +14,7 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Cyberomulus\SiteMapGeneratorBundle\SiteMapProvidersCollection;
-use Cyberomulus\SiteMapGeneratorBundle\SiteMapProvider;
+use Symfony\Component\Console\Helper\Table;
 
 /**
  * This command list all site map providers and their configrations
@@ -63,20 +63,19 @@ class ProvidersCommand extends Command
 			$output->writeln(["No declared sitemap provider.","See README.md to create one."]);
 			return;
 			}
-		
-		$output->writeln(["List of known sitemap providers:", " "]);
+			
+		$table = new Table($output);
+		$table->setHeaderTitle("List of known sitemap providers:");
+		$table->setHeaders(array("Name", "Last modification date", "Class"));
 		
 		foreach ($this->providersCollection->getProviders() as $provider)
 			{
-			if ($provider instanceof SiteMapProvider)
-				{					
-				$output->writeln([
-							"Name: " . $provider->getSiteMapName(),
-							"Last modification Date: " . (is_null($provider->getSiteMapLastModification()) ? "null" : $provider->getSiteMapLastModification()->format('Y-m-d H:i:s')),
-							// FIXME add class name
-							" "
-							]);
-				}
+			$table->addRow(array($provider->getSiteMapName(), 
+								(is_null($provider->getSiteMapLastModification()) ? "null" : $provider->getSiteMapLastModification()->format('Y-m-d H:i:s')),
+								get_class($provider)
+								));
 			}
+		
+		$table->render();
 		}
 	}
