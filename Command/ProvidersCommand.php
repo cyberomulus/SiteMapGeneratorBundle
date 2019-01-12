@@ -73,6 +73,7 @@ class ProvidersCommand extends Command
 				$output->writeln([
 							"Name: " . $provider->getSiteMapName(),
 							"Last modification Date: " . (is_null($provider->getSiteMapLastModification()) ? "null" : $provider->getSiteMapLastModification()->format('Y-m-d H:i:s')),
+							// FIXME add class name
 							" "
 							]);
 				}
