@@ -25,11 +25,28 @@ use Cyberomulus\SiteMapGenerator\Formatter\XMLFormatter;
 class SiteMapController extends AbstractController
 	{
 	/**
+	 * Service (defined in the constructor)
+	 * 
+	 * @var SiteMapProvidersCollection
+	 */
+	private $providersCollection;
+	
+	/**
+	 * @param	SiteMapProvidersCollection	$providersCollection	Service
+	 * 
+	 * @author	Brack Romain <http://www.cyberomulus.me>
+	 */
+	public function __construct(SiteMapProvidersCollection $providersCollection)
+		{
+		$this->providersCollection = $providersCollection;
+		}
+		
+	/**
 	 * Route for display the sitemap index
 	 * 
 	 * @author	Brack Romain <http://www.cyberomulus.me>
 	 */
-	public function displayIndex(SiteMapProvidersCollection $providersCollection)
+	public function displayIndex()
 		{
 		$index = new SiteMapIndex();
 		
