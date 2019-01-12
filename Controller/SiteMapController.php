@@ -50,7 +50,7 @@ class SiteMapController extends AbstractController
 		{
 		$index = new SiteMapIndex();
 		
-		foreach ($providersCollection->getProviders() as $provider)
+		foreach ($this->providersCollection->getProviders() as $provider)
 			{
 			$url = $this->generateUrl('cyberomulus_site_map_generator_site_map',
 									array('name' => $provider->getSiteMapName()));

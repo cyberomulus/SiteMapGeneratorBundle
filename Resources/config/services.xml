@@ -13,5 +13,9 @@
         </service>
         
         <service id="Cyberomulus\SiteMapGeneratorBundle\Command\ProvidersCommand" />
+        
+		<service id="cyberomulus_site_map_generator.site_map.controller" class="Cyberomulus\SiteMapGeneratorBundle\Controller\SiteMapController" public="true">
+			<argument type="service" id="Cyberomulus\SiteMapGeneratorBundle\SiteMapProvidersCollection" />
+		</service>
     </services>
 </container>
