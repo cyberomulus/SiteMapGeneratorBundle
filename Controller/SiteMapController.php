@@ -59,6 +59,7 @@ class SiteMapController extends AbstractController
 			}
 		
 		$formatter = new XMLFormatter();
+		$response->headers->set('Content-Type', 'xml');
 		return new Response($formatter->formatSiteMapIndex($index));
 		}
 	
