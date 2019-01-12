@@ -114,11 +114,11 @@ It is now registered as sitemap, you can check it with the command ``:
 ```console
 $ php bin/console cyberomulus:siteMapGenerator:providers
 
-List of known sitemap providers:
-Name: blog_sitemap
-Last modification Date: null
-
-$ 
++--------------+--- List of known sitemap providers: -------------------+
+| Name         | Last modification date | Class                         |
++--------------+------------------------+-------------------------------+
+| blog_sitemap | 2019-01-12 23:48:02    | App\Controller\BlogController |
++--------------+------------------------+-------------------------------+
 ```
 
 And the sitemap index is available at the path : /sitemap.xml
