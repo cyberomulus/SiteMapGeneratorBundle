@@ -16,6 +16,9 @@ use Cyberomulus\SiteMapGeneratorBundle\SiteMapProvidersCollection;
 use Cyberomulus\SiteMapGenerator\SiteMapIndex;
 use Cyberomulus\SiteMapGenerator\Entries\SiteMapEntry;
 use Cyberomulus\SiteMapGenerator\Formatter\XMLFormatter;
+use Cyberomulus\SiteMapGenerator\SiteMap;
+use Cyberomulus\SiteMapGenerator\Entries\URLEntry;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 /**
  * Regroup all route of bundle
@@ -53,7 +56,8 @@ class SiteMapController extends AbstractController
 		foreach ($this->providersCollection->getProviders() as $provider)
 			{
 			$url = $this->generateUrl('cyberomulus_site_map_generator_site_map',
-									array('name' => $provider->getSiteMapName()));
+									array('name' => $provider->getSiteMapName()),
+									UrlGeneratorInterface::ABSOLUTE_URL);
 				
 			$index->addSiteMapEntry(new SiteMapEntry($url, $provider->getSiteMapLastModification()));
 			}
@@ -72,7 +76,29 @@ class SiteMapController extends AbstractController
 	 */
 	public function displaySiteMap(string $name)
 		{
-		// FIXME create method
-		return new Response("ok");
+		$provider = $this->providersCollection->getProviderByName($name);
+		
+		if (is_null($provider))
+			throw $this->createNotFoundException("The sitemap '" . $name . "' don't exist.");
+		
+		$sitemap = new SiteMap(false);
+		
+		foreach ($provider->getUrlEntries() as $urlEntry)
+			{
+			if ($urlEntry instanceof URLEntry)
+				{
+				if (count($urlEntry->getGoogleImageEntries()) > 0)
+					$sitemap->setActivateGoogleExtra(true);
+				
+				// TODO feat : replace null value for default value
+				
+				$sitemap->addUrlEntry($urlEntry);
+				}
+			}
+		
+		$formatter = new XMLFormatter();
+		$response = new Response($formatter->formatSiteMap($sitemap));
+		$response->headers->set('Content-Type', 'xml');
+		return $response;
 		}
 	}
