@@ -37,9 +37,28 @@ class SiteMapProvidersCollection
 	
 	/**
 	 * @return	iterable	List of sitemap providers
+	 * 
+	 * @author	Brack Romain <http://www.cyberomulus.me>
 	 */
 	public function getProviders(): iterable
 		{
 		return $this->providers;
+		}
+	
+	/**
+	 * @param	string 		$name	The name of provider
+	 * @return 	SiteMapProvider		The provider named by the argument, or null if the name don't exist
+	 * 
+	 * @author	Brack Romain <http://www.cyberomulus.me>
+	 */
+	public function getProviderByName(string $name): SiteMapProvider
+		{
+		foreach ($this->providers as $provider)
+			{
+			if ($provider == $name)
+				return $provider;
+			}
+		
+		return null;
 		}
 	}

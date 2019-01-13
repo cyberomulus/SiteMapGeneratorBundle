@@ -16,6 +16,8 @@ use Cyberomulus\SiteMapGeneratorBundle\SiteMapProvidersCollection;
 use Cyberomulus\SiteMapGenerator\SiteMapIndex;
 use Cyberomulus\SiteMapGenerator\Entries\SiteMapEntry;
 use Cyberomulus\SiteMapGenerator\Formatter\XMLFormatter;
+use Cyberomulus\SiteMapGenerator\SiteMap;
+use Cyberomulus\SiteMapGenerator\Entries\URLEntry;
 
 /**
  * Regroup all route of bundle
@@ -72,7 +74,29 @@ class SiteMapController extends AbstractController
 	 */
 	public function displaySiteMap(string $name)
 		{
-		// FIXME create method
-		return new Response("ok");
+		$provider = $this->providersCollection->getProviderByName($name);
+		
+		if (is_null($provider))
+			throw $this->createNotFoundException("The sitemap '" . $name . "' don't exist.");
+		
+		$sitemap = new SiteMap(false);
+		
+		foreach ($provider->getUrlEntries() as $urlEntry)
+			{
+			if ($urlEntry instanceof URLEntry)
+				{
+				if (count($urlEntry->getGoogleImageEntries()) > 0)
+					$sitemap->setActivateGoogleExtra(true);
+				
+				// TODO feat : config for default value
+				
+				$sitemap->addUrlEntry($urlEntry);
+				}
+			}
+		
+		$formatter = new XMLFormatter();
+		$response = new Response($formatter->formatSiteMap($sitemap));
+		$response->headers->set('Content-Type', 'xml');
+		return $response;
 		}
 	}

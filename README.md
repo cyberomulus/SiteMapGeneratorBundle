@@ -1,6 +1,6 @@
 # SiteMapGeneratorBundle
 
-Generate a sitemap for your Symfony website
+Generate a sitemap for your Symfony website (bridge for [cyberomulus/SiteMapGenerator](https://github.com/cyberomulus/SiteMapGenerator)
 
 ## Installation
 
@@ -87,6 +87,8 @@ class BlogController extends AbstractController implements SiteMapProvider
 2 methods must be implemented:
 * `getSiteMapName(): string`: must return the sitemap name (used for the route name and on url)
 * `getSiteMapLastModification()`: must return the last modification, null for not use
+* `getUrlEntries(): \Iterator`: must return an array of `Cyberomulus\SiteMapGenerator\Entries\URLEntry`
+```
 
 ```php
 // src/Controller/BlogController.php
@@ -94,6 +96,7 @@ class BlogController extends AbstractController implements SiteMapProvider
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Cyberomulus\SiteMapGeneratorBundle\SiteMapProvider;
+use Cyberomulus\SiteMapGenerator\Entries\URLEntry;
 
 class BlogController extends AbstractController implements SiteMapProvider
 {
@@ -106,10 +109,31 @@ class BlogController extends AbstractController implements SiteMapProvider
     {
     	return null; // or a datetime object
     }
+    
+    public function getUrlEntries(): \Iterator
+    {
+    	$articles = ...; // get articles in doctrine
+    	$urls = array();
+    	
+    	foreach ($articles as $art)
+    		$urls[] = new SiteMapLEntry($this->generateUrl("blog_show", array('slug' => $art->getSlug())), 
+    										$art->getLastMod());
+    		// see doc of composer package cyberomulus/sitemap-generator for create a complete SiteMapLEntry 
+    	
+    	return $urls;
+    }
+    
+    /**
+     * @Route("/blog/{slug}", name="blog_show")
+     */
+    public function show($slug)
+    {
+    	// a route
+    }
 }
 ```
 
-It is now registered as sitemap, you can check it with the command ``:
+It is now registered as sitemap, you can check it with the command `php bin/console cyberomulus:siteMapGenerator:providers`:
 
 ```console
 $ php bin/console cyberomulus:siteMapGenerator:providers
