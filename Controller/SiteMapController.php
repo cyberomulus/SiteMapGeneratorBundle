@@ -18,6 +18,7 @@ use Cyberomulus\SiteMapGenerator\Entries\SiteMapEntry;
 use Cyberomulus\SiteMapGenerator\Formatter\XMLFormatter;
 use Cyberomulus\SiteMapGenerator\SiteMap;
 use Cyberomulus\SiteMapGenerator\Entries\URLEntry;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 /**
  * Regroup all route of bundle
@@ -55,7 +56,8 @@ class SiteMapController extends AbstractController
 		foreach ($this->providersCollection->getProviders() as $provider)
 			{
 			$url = $this->generateUrl('cyberomulus_site_map_generator_site_map',
-									array('name' => $provider->getSiteMapName()));
+									array('name' => $provider->getSiteMapName()),
+									UrlGeneratorInterface::ABSOLUTE_URL);
 				
 			$index->addSiteMapEntry(new SiteMapEntry($url, $provider->getSiteMapLastModification()));
 			}
