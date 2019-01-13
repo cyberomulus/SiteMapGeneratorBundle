@@ -117,12 +117,12 @@ class BlogController extends AbstractController implements SiteMapProvider
     	
     	foreach ($articles as $art)
     		$urls[] = new SiteMapLEntry(
-    							$this->generateUrl("blog_show", 
-    													array('slug' => $art->getSlug()),
-    													// important use this argument
-    													UrlGeneratorInterface::ABSOLUTE_URL), 
-    							$art->getLastMod()
-    							);
+    					$this->generateUrl("blog_show", 
+    								array('slug' => $art->getSlug()),
+    								// important use this argument
+    								UrlGeneratorInterface::ABSOLUTE_URL), 
+    					$art->getLastMod()
+    					);
     		// see doc of composer package cyberomulus/sitemap-generator for create a complete SiteMapLEntry and include image for Google extra
     	
     	return $urls;
