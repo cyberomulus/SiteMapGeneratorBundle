@@ -96,6 +96,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Cyberomulus\SiteMapGeneratorBundle\SiteMapProvider;
 use Cyberomulus\SiteMapGenerator\Entries\URLEntry;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class BlogController extends AbstractController implements SiteMapProvider
 {
@@ -115,8 +116,13 @@ class BlogController extends AbstractController implements SiteMapProvider
     	$urls = array();
     	
     	foreach ($articles as $art)
-    		$urls[] = new SiteMapLEntry($this->generateUrl("blog_show", array('slug' => $art->getSlug())), 
-    										$art->getLastMod());
+    		$urls[] = new SiteMapLEntry(
+    							$this->generateUrl("blog_show", 
+    													array('slug' => $art->getSlug()),
+    													// important use this argument
+    													UrlGeneratorInterface::ABSOLUTE_URL), 
+    							$art->getLastMod()
+    							);
     		// see doc of composer package cyberomulus/sitemap-generator for create a complete SiteMapLEntry and include image for Google extra
     	
     	return $urls;
