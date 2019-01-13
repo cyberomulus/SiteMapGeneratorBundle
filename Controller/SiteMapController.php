@@ -88,7 +88,7 @@ class SiteMapController extends AbstractController
 				if (count($urlEntry->getGoogleImageEntries()) > 0)
 					$sitemap->setActivateGoogleExtra(true);
 				
-				// TODO feat : config for default value
+				// TODO feat : replace null value for default value
 				
 				$sitemap->addUrlEntry($urlEntry);
 				}
