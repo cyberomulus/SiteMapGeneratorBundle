@@ -51,7 +51,7 @@ class SiteMapProvidersCollection
 	 * 
 	 * @author	Brack Romain <http://www.cyberomulus.me>
 	 */
-	public function getProviderByName(string $name): SiteMapProvider
+	public function getProviderByName(string $name)
 		{
 		foreach ($this->providers as $provider)
 			{
