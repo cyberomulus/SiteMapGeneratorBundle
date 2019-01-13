@@ -88,7 +88,6 @@ class BlogController extends AbstractController implements SiteMapProvider
 * `getSiteMapName(): string`: must return the sitemap name (used for the route name and on url)
 * `getSiteMapLastModification()`: must return the last modification, null for not use
 * `getUrlEntries(): \Iterator`: must return an array of `Cyberomulus\SiteMapGenerator\Entries\URLEntry`
-```
 
 ```php
 // src/Controller/BlogController.php
@@ -118,7 +117,7 @@ class BlogController extends AbstractController implements SiteMapProvider
     	foreach ($articles as $art)
     		$urls[] = new SiteMapLEntry($this->generateUrl("blog_show", array('slug' => $art->getSlug())), 
     										$art->getLastMod());
-    		// see doc of composer package cyberomulus/sitemap-generator for create a complete SiteMapLEntry 
+    		// see doc of composer package cyberomulus/sitemap-generator for create a complete SiteMapLEntry and include image for Google extra
     	
     	return $urls;
     }
