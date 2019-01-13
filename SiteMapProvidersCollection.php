@@ -55,7 +55,7 @@ class SiteMapProvidersCollection
 		{
 		foreach ($this->providers as $provider)
 			{
-			if ($provider == $name)
+				if ($provider->getSiteMapName() == $name)
 				return $provider;
 			}
 		
