@@ -26,6 +26,10 @@ class CyberomulusSiteMapGeneratorExtension extends Extension
 	 */
 	public function load(array $configs, ContainerBuilder $container)
 		{
+		// loas configuration
+		$configuration = new Configuration();
+		$config = $this->processConfiguration($configuration, $configs);
+			
 		// Adds the tag on all services implementing the interface Cyberomulus\SiteMapGeneratorBundle\SiteMapProvider
 		$container->registerForAutoconfiguration(SiteMapProvider::class)->addTag('cyberomulus_sitemapgenerator.sitemap_provider');
 		
