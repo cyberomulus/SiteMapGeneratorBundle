@@ -36,5 +36,5 @@ interface SiteMapProvider
 	 * 
 	 * @author	Brack Romain <http://www.cyberomulus.me>
 	 */
-	public function getUrlEntries(): \Iterator;
+	public function getUrlEntries(): iterable;
 	}
