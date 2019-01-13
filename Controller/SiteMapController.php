@@ -28,9 +28,7 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 class SiteMapController extends AbstractController
 	{
 	/**
-	 * Service (defined in the constructor)
-	 * 
-	 * @var SiteMapProvidersCollection
+	 * @var	SiteMapProvidersCollection	Service (defined in the constructor)
 	 */
 	private $providersCollection;
 	
@@ -63,7 +61,6 @@ class SiteMapController extends AbstractController
 			}
 		
 		$formatter = new XMLFormatter();
-		
 		$response = new Response($formatter->formatSiteMapIndex($index));;
 		$response->headers->set('Content-Type', 'xml');
 		return $response;

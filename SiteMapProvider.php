@@ -32,7 +32,7 @@ interface SiteMapProvider
 	public function getSiteMapLastModification();
 	
 	/**
-	 * @return	\Iterator	An array of Cyberomulus\SiteMapGenerator\Entries\URLEntry
+	 * @return	iterable	An array of Cyberomulus\SiteMapGenerator\Entries\URLEntry
 	 * 
 	 * @author	Brack Romain <http://www.cyberomulus.me>
 	 */

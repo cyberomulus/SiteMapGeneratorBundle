@@ -50,7 +50,7 @@ class ProvidersCommand extends Command
 	 */
 	protected function configure()
 		{
-		$this->setDescription('ist all site map providers and their configrations.');
+		$this->setDescription('List all site map providers and their configrations.');
 		}
 	
 	/**

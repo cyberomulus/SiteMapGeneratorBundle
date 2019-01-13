@@ -31,6 +31,8 @@ class SiteMapProvidersCollection
 	 */
 	public function __construct(iterable $providers)
 		{
+		$providers = array();
+			
 		foreach ($providers as $value)
 			$this->providers[] = $value;
 		}
@@ -55,7 +57,7 @@ class SiteMapProvidersCollection
 		{
 		foreach ($this->providers as $provider)
 			{
-				if ($provider->getSiteMapName() == $name)
+			if ($provider->getSiteMapName() == $name)
 				return $provider;
 			}
 		
