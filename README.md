@@ -68,3 +68,21 @@ cyberomulus_sitemapgenerator:
 
 * [Create your first sitemap](Resources/doc/01_create_sitemap.md)
 * [Commands list](Resources/doc/10_commands.md)
+
+## Want more ?
+
+#### You just have to ask
+
+You can request a new function in [issue](https://github.com/cyberomulus/SiteMapGeneratorBundle/issues)
+
+#### Contribute
+
+Your pull requests are welcome!!
+
+## Contributors
+
+* Cyberomulus
+
+## License
+
+This library is open-source software licensed under the [MIT license](http://opensource.org/licenses/MIT).
