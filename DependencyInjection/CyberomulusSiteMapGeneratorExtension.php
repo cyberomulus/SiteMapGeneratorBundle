@@ -39,7 +39,7 @@ class CyberomulusSiteMapGeneratorExtension extends Extension
 		
 		// Adds parameters from config
 		$container->setParameter("cyberomulus_site_map_generator.defaults_values.url.auto_connect", 
-			($config["defaults_values"]["url"]["auto_connect"] ?: false) );
+			isset($config["defaults_values"]["url"]["auto_connect"]) ? $config["defaults_values"]["url"]["auto_connect"] : false );
 		$container->setParameter("cyberomulus_site_map_generator.defaults_values.url.change_frequence",
 			($config["defaults_values"]["url"]["change_frequence"] ?: null) );
 		$container->setParameter("cyberomulus_site_map_generator.defaults_values.url.priority",
