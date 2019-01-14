@@ -42,7 +42,7 @@ class CyberomulusSiteMapGeneratorExtension extends Extension
 		if (array_key_exists("defaults_values", $config) == true)
 			$definition->replaceArgument(0, $config['defaults_values']);
 		else
-			$definition->replaceArgument(0, array());
+			$definition->replaceArgument(1, array());
 		}
 	}
 
