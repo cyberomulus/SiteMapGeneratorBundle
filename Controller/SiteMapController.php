@@ -104,11 +104,11 @@ class SiteMapController extends AbstractController
 					
 					foreach ($urlEntry->getGoogleImageEntries() as $imageEntry)
 						{
-						if ( (is_null($imageEntry->getTitle()) == true) && (is_null($this->configDefaultsValues["image"]["title"]) == false) )
+						if ( (is_null($imageEntry->getTitle()) == true) && (array_key_exists($this->configDefaultsValues["image"]["title"]) == true) )
 							$imageEntry->setTitle($this->configDefaultsValues["image"]["title"]);
-						if ( (is_null($imageEntry->getCaption()) == true) && (is_null($this->configDefaultsValues["image"]["caption"]) == false) )
+						if ( (is_null($imageEntry->getCaption()) == true) && (array_key_exists($this->configDefaultsValues["image"]["caption"]) == true) )
 							$imageEntry->setCaption($this->configDefaultsValues["image"]["caption"]);
-						if ( (is_null($imageEntry->getLicense()) == true) && (is_null($this->configDefaultsValues["image"]["license"]) == false) )
+						if ( (is_null($imageEntry->getLicense()) == true) && (array_key_exists($this->configDefaultsValues["image"]["license"]) == true) )
 							$imageEntry->setLicense($this->configDefaultsValues["image"]["license"]);
 						}
 					}
