@@ -84,13 +84,14 @@ class SiteMapController extends AbstractController
 		foreach ($provider->getUrlEntries() as $urlEntry)
 			{
 			if ($urlEntry instanceof URLEntry)
-			{/*
-				if ( (is_null($urlEntry->getLastModification()) == true) && ($this->configDefaultsValues["url"]["auto_connect"] == true) )
+				{
+				if ( is_null($urlEntry->getLastModification()) && 
+					($this->getParameter("cyberomulus_site_map_generator.defaults_values.url.auto_connect") == true) )
 					$urlEntry->setLastModification(new \DateTime("now"));
-				if ( (is_null($urlEntry->getChangeFrequence()) == true) && (is_null($this->configDefaultsValues["url"]["change_frequence"]) == false) )
-					$urlEntry->setChangeFrequence($this->configDefaultsValues["url"]["change_frequence"]);
-				if ( (is_null($urlEntry->getPriority()) == true) && (is_null($this->configDefaultsValues["url"]["priority"]) == false) )
-					$urlEntry->setPriority($this->configDefaultsValues["url"]["priority"]);
+				if ( is_null($urlEntry->getChangeFrequence()) )
+					$urlEntry->setChangeFrequence($this->getParameter("cyberomulus_site_map_generator.defaults_values.url.change_frequence"));
+				if ( is_null($urlEntry->getPriority()) )
+					$urlEntry->setPriority($this->getParameter("cyberomulus_site_map_generator.defaults_values.url.priority"));
 				
 				if (count($urlEntry->getGoogleImageEntries()) > 0)
 					{
@@ -98,15 +99,15 @@ class SiteMapController extends AbstractController
 					
 					foreach ($urlEntry->getGoogleImageEntries() as $imageEntry)
 						{
-						if ( (is_null($imageEntry->getTitle()) == true) && (array_key_exists($this->configDefaultsValues["image"]["title"]) == true) )
-							$imageEntry->setTitle($this->configDefaultsValues["image"]["title"]);
-						if ( (is_null($imageEntry->getCaption()) == true) && (array_key_exists($this->configDefaultsValues["image"]["caption"]) == true) )
-							$imageEntry->setCaption($this->configDefaultsValues["image"]["caption"]);
-						if ( (is_null($imageEntry->getLicense()) == true) && (array_key_exists($this->configDefaultsValues["image"]["license"]) == true) )
-							$imageEntry->setLicense($this->configDefaultsValues["image"]["license"]);
+						if ( is_null($imageEntry->getTitle()) )
+							$imageEntry->setTitle($this->getParameter("cyberomulus_site_map_generator.defaults_values.image.title"));
+						if ( is_null($imageEntry->getCaption()) )
+							$imageEntry->setCaption($this->getParameter("cyberomulus_site_map_generator.defaults_values.image.caption"));
+						if ( is_null($imageEntry->getLicense()) )
+							$imageEntry->setLicense($this->getParameter("cyberomulus_site_map_generator.defaults_values.image.license"));
 						}
 					}
-				*/
+				
 				$sitemap->addUrlEntry($urlEntry);
 				}
 			}
