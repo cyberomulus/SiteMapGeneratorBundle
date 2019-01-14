@@ -90,7 +90,7 @@ class SiteMapController extends AbstractController
 		foreach ($provider->getUrlEntries() as $urlEntry)
 			{
 			if ($urlEntry instanceof URLEntry)
-				{
+			{/*
 				if ( (is_null($urlEntry->getLastModification()) == true) && ($this->configDefaultsValues["url"]["auto_connect"] == true) )
 					$urlEntry->setLastModification(new \DateTime("now"));
 				if ( (is_null($urlEntry->getChangeFrequence()) == true) && (is_null($this->configDefaultsValues["url"]["change_frequence"]) == false) )
@@ -112,7 +112,7 @@ class SiteMapController extends AbstractController
 							$imageEntry->setLicense($this->configDefaultsValues["image"]["license"]);
 						}
 					}
-				
+				*/
 				$sitemap->addUrlEntry($urlEntry);
 				}
 			}

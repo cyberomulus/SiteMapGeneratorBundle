@@ -37,12 +37,19 @@ class CyberomulusSiteMapGeneratorExtension extends Extension
 		$loader = new XmlFileLoader($container,	new FileLocator(__DIR__.'/../Resources/config'));
 		$loader->load('services.xml');
 		
-		// Modify with config
-		$definition = $container->getDefinition('cyberomulus_site_map_generator.site_map.controller');
-		if (array_key_exists("defaults_values", $config) == true)
-			$definition->replaceArgument(0, $config['defaults_values']);
-		else
-			$definition->replaceArgument(1, array());
+		// Adds parameters from config
+		$container->setParameter("cyberomulus_site_map_generator.defaults_values.url.auto_connect", 
+			($config["defaults_values"]["url"]["auto_connect"] ?: false) );
+		$container->setParameter("cyberomulus_site_map_generator.defaults_values.url.change_frequence",
+			($config["defaults_values"]["url"]["change_frequence"] ?: null) );
+		$container->setParameter("cyberomulus_site_map_generator.defaults_values.url.priority",
+			($config["defaults_values"]["url"]["priority"] ?: null) );
+		$container->setParameter("cyberomulus_site_map_generator.defaults_values.image.title",
+			($config["defaults_values"]["image"]["title"] ?: null) );
+		$container->setParameter("cyberomulus_site_map_generator.defaults_values.image.caption",
+			($config["defaults_values"]["image"]["caption"] ?: null) );
+		$container->setParameter("cyberomulus_site_map_generator.defaults_values.image.license",
+			($config["defaults_values"]["image"]["license"] ?: null) );
 		}
 	}
 
