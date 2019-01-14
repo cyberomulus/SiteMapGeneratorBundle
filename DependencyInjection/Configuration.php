@@ -33,7 +33,7 @@ class Configuration implements ConfigurationInterface
 						->info("Set the defaults values on url entries")
 							->children()
 								->booleanNode('auto_connect')
-									->info('Set a datetime at now if is null')
+									->info('true for set a datetime at now if is null')
 									->defaultFalse()
 								->end()
 								->enumNode('change_frequence')
@@ -68,4 +68,3 @@ class Configuration implements ConfigurationInterface
 		return $treeBuilder;
 		}
 	}
-
