@@ -15,6 +15,7 @@
         
 		<service id="cyberomulus_site_map_generator.site_map.controller" class="Cyberomulus\SiteMapGeneratorBundle\Controller\SiteMapController" public="true">
 			<argument type="service" id="Cyberomulus\SiteMapGeneratorBundle\SiteMapProvidersCollection" />
+			<argument></argument> <!-- defaults values config tree will be filled in dynamically -->
 		</service>
     </services>
 </container>

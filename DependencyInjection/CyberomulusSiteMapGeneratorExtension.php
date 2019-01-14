@@ -36,6 +36,10 @@ class CyberomulusSiteMapGeneratorExtension extends Extension
 		// Adds internals services in container
 		$loader = new XmlFileLoader($container,	new FileLocator(__DIR__.'/../Resources/config'));
 		$loader->load('services.xml');
+		
+		// Modify with config
+		$definition = $container->getDefinition('cyberomulus_site_map_generator.site_map.controller');
+		$definition->replaceArgument(0, $config['defaults_values']);
 		}
 	}
 

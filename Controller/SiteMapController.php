@@ -33,13 +33,20 @@ class SiteMapController extends AbstractController
 	private $providersCollection;
 	
 	/**
+	 * @var iterable	config tree defaults_values
+	 */
+	private $configDefaultsValues;
+	
+	/**
 	 * @param	SiteMapProvidersCollection	$providersCollection	Service
+	 * @param	iterable					$configDefaultsValues	config tree defaults_values
 	 * 
 	 * @author	Brack Romain <http://www.cyberomulus.me>
 	 */
-	public function __construct(SiteMapProvidersCollection $providersCollection)
+	public function __construct(SiteMapProvidersCollection $providersCollection, iterable $configDefaultsValues)
 		{
 		$this->providersCollection = $providersCollection;
+		$this->configDefaultsValues = $configDefaultsValues;
 		}
 		
 	/**
@@ -84,10 +91,27 @@ class SiteMapController extends AbstractController
 			{
 			if ($urlEntry instanceof URLEntry)
 				{
-				if (count($urlEntry->getGoogleImageEntries()) > 0)
-					$sitemap->setActivateGoogleExtra(true);
+				if ( (is_null($urlEntry->getLastModification()) == true) && ($this->configDefaultsValues["url"]["auto_connect"] == true) )
+					$urlEntry->setLastModification(new \DateTime("now"));
+				if ( (is_null($urlEntry->getChangeFrequence()) == true) && (is_null($this->configDefaultsValues["url"]["change_frequence"]) == false) )
+					$urlEntry->setChangeFrequence($this->configDefaultsValues["url"]["change_frequence"]);
+				if ( (is_null($urlEntry->getPriority()) == true) && (is_null($this->configDefaultsValues["url"]["priority"]) == false) )
+					$urlEntry->setPriority($this->configDefaultsValues["url"]["priority"]);
 				
-				// TODO feat : replace null value for default value
+				if (count($urlEntry->getGoogleImageEntries()) > 0)
+					{
+					$sitemap->setActivateGoogleExtra(true);
+					
+					foreach ($urlEntry->getGoogleImageEntries() as $imageEntry)
+						{
+						if ( (is_null($imageEntry->getTitle()) == true) && (is_null($this->configDefaultsValues["image"]["title"]) == false) )
+							$imageEntry->setTitle($this->configDefaultsValues["image"]["title"]);
+						if ( (is_null($imageEntry->getCaption()) == true) && (is_null($this->configDefaultsValues["image"]["caption"]) == false) )
+							$imageEntry->setCaption($this->configDefaultsValues["image"]["caption"]);
+						if ( (is_null($imageEntry->getLicense()) == true) && (is_null($this->configDefaultsValues["image"]["license"]) == false) )
+							$imageEntry->setLicense($this->configDefaultsValues["image"]["license"]);
+						}
+					}
 				
 				$sitemap->addUrlEntry($urlEntry);
 				}
