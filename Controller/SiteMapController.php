@@ -33,20 +33,14 @@ class SiteMapController extends AbstractController
 	private $providersCollection;
 	
 	/**
-	 * @var iterable	config tree defaults_values
-	 */
-	private $configDefaultsValues;
-	
-	/**
 	 * @param	SiteMapProvidersCollection	$providersCollection	Service
 	 * @param	iterable					$configDefaultsValues	config tree defaults_values
 	 * 
 	 * @author	Brack Romain <http://www.cyberomulus.me>
 	 */
-	public function __construct(SiteMapProvidersCollection $providersCollection, iterable $configDefaultsValues)
+	public function __construct(SiteMapProvidersCollection $providersCollection)
 		{
 		$this->providersCollection = $providersCollection;
-		$this->configDefaultsValues = $configDefaultsValues;
 		}
 		
 	/**
