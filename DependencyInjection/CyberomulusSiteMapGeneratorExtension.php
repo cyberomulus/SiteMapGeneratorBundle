@@ -38,11 +38,11 @@ class CyberomulusSiteMapGeneratorExtension extends Extension
 		$loader->load('services.xml');
 		
 		// Modify with config
-		if (array_key_exists($config['defaults_values']) == true)
-			{
-			$definition = $container->getDefinition('cyberomulus_site_map_generator.site_map.controller');
+		$definition = $container->getDefinition('cyberomulus_site_map_generator.site_map.controller');
+		if (array_key_exists("defaults_values", $config) == true)
 			$definition->replaceArgument(0, $config['defaults_values']);
-			}
+		else
+			$definition->replaceArgument(0, array());
 		}
 	}
 
