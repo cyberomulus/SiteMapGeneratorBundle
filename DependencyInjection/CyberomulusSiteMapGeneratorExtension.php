@@ -41,15 +41,15 @@ class CyberomulusSiteMapGeneratorExtension extends Extension
 		$container->setParameter("cyberomulus_site_map_generator.defaults_values.url.auto_connect", 
 			isset($config["defaults_values"]["url"]["auto_connect"]) ? $config["defaults_values"]["url"]["auto_connect"] : false );
 		$container->setParameter("cyberomulus_site_map_generator.defaults_values.url.change_frequence",
-			($config["defaults_values"]["url"]["change_frequence"] ?: null) );
+			isset($config["defaults_values"]["url"]["change_frequence"])  ? $config["defaults_values"]["url"]["change_frequence"] : null );
 		$container->setParameter("cyberomulus_site_map_generator.defaults_values.url.priority",
-			($config["defaults_values"]["url"]["priority"] ?: null) );
+			isset($config["defaults_values"]["url"]["priority"]) ? $config["defaults_values"]["url"]["priority"] : null );
 		$container->setParameter("cyberomulus_site_map_generator.defaults_values.image.title",
-			($config["defaults_values"]["image"]["title"] ?: null) );
+			isset($config["defaults_values"]["image"]["title"]) ? $config["defaults_values"]["image"]["title"] : null );
 		$container->setParameter("cyberomulus_site_map_generator.defaults_values.image.caption",
-			($config["defaults_values"]["image"]["caption"] ?: null) );
+			isset($config["defaults_values"]["image"]["caption"]) ? $config["defaults_values"]["image"]["caption"] : null );
 		$container->setParameter("cyberomulus_site_map_generator.defaults_values.image.license",
-			($config["defaults_values"]["image"]["license"] ?: null) );
+			isset($config["defaults_values"]["image"]["license"]) ? $config["defaults_values"]["image"]["license"] : null );
 		}
 	}
 
