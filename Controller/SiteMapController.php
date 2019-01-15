@@ -85,7 +85,7 @@ class SiteMapController extends AbstractController
 			if ($urlEntry instanceof URLEntry)
 				{
 				if ( is_null($urlEntry->getLastModification()) && 
-					($this->getParameter("cyberomulus_site_map_generator.defaults_values.url.auto_connect") == true) )
+					($this->getParameter("cyberomulus_site_map_generator.defaults_values.url.auto_datetime_now") == true) )
 					$urlEntry->setLastModification(new \DateTime("now"));
 				if ( is_null($urlEntry->getChangeFrequence()) )
 					$urlEntry->setChangeFrequence($this->getParameter("cyberomulus_site_map_generator.defaults_values.url.change_frequence"));

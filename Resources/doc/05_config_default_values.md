@@ -49,7 +49,7 @@ cyberomulus_site_map_generator:
         # Set the defaults values on url entries (false by default)
         url:
             # true for set a datetime at now if is null
-            auto_connect:         true
+            auto_datetime_now:         true
             # Set this frequence if is null (never | yearly | monthly | weekly | daily | hourly | always)
             change_frequence:     "weekly" # One of "never"; "yearly"; "monthly"; "weekly"; "daily"; "hourly"; "always"
             # Set this priority if is null (a float between 0.0 and 1.0)

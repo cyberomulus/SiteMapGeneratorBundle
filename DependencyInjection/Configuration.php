@@ -32,7 +32,7 @@ class Configuration implements ConfigurationInterface
 						->arrayNode('url')
 						->info("Set the defaults values on url entries")
 							->children()
-								->booleanNode('auto_connect')
+								->booleanNode('auto_datetime_now')
 									->info('true for set a datetime at now if is null (false by default)')
 									->defaultFalse()
 								->end()
