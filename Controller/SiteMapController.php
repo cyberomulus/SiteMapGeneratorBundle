@@ -84,10 +84,28 @@ class SiteMapController extends AbstractController
 			{
 			if ($urlEntry instanceof URLEntry)
 				{
-				if (count($urlEntry->getGoogleImageEntries()) > 0)
-					$sitemap->setActivateGoogleExtra(true);
+				if ( is_null($urlEntry->getLastModification()) && 
+					($this->getParameter("cyberomulus_site_map_generator.defaults_values.url.last_modification_now") == true) )
+					$urlEntry->setLastModification(new \DateTime("now"));
+				if ( is_null($urlEntry->getChangeFrequence()) )
+					$urlEntry->setChangeFrequence($this->getParameter("cyberomulus_site_map_generator.defaults_values.url.change_frequence"));
+				if ( is_null($urlEntry->getPriority()) )
+					$urlEntry->setPriority($this->getParameter("cyberomulus_site_map_generator.defaults_values.url.priority"));
 				
-				// TODO feat : replace null value for default value
+				if (count($urlEntry->getGoogleImageEntries()) > 0)
+					{
+					$sitemap->setActivateGoogleExtra(true);
+					
+					foreach ($urlEntry->getGoogleImageEntries() as $imageEntry)
+						{
+						if ( is_null($imageEntry->getTitle()) )
+							$imageEntry->setTitle($this->getParameter("cyberomulus_site_map_generator.defaults_values.image.title"));
+						if ( is_null($imageEntry->getCaption()) )
+							$imageEntry->setCaption($this->getParameter("cyberomulus_site_map_generator.defaults_values.image.caption"));
+						if ( is_null($imageEntry->getLicense()) )
+							$imageEntry->setLicense($this->getParameter("cyberomulus_site_map_generator.defaults_values.image.license"));
+						}
+					}
 				
 				$sitemap->addUrlEntry($urlEntry);
 				}
