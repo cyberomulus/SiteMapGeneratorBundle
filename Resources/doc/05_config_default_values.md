@@ -2,7 +2,7 @@
 
 ## The principle
 
-The bundle is used to define defaults for parameters.
+The bundle allow define default values for parameters.
 
 For example: If you want all your URLs to have the change_frequence attribute automatically set to the daily value, you can do this by specifying it with a configuration file and set it to null in your object.  
 The default value will be set only if the object contains null.
