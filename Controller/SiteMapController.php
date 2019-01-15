@@ -34,7 +34,6 @@ class SiteMapController extends AbstractController
 	
 	/**
 	 * @param	SiteMapProvidersCollection	$providersCollection	Service
-	 * @param	iterable					$configDefaultsValues	config tree defaults_values
 	 * 
 	 * @author	Brack Romain <http://www.cyberomulus.me>
 	 */
