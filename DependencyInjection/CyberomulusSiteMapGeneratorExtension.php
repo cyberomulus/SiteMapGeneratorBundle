@@ -38,8 +38,8 @@ class CyberomulusSiteMapGeneratorExtension extends Extension
 		$loader->load('services.xml');
 		
 		// Adds parameters from config
-		$container->setParameter("cyberomulus_site_map_generator.defaults_values.url.auto_datetime_now", 
-			isset($config["defaults_values"]["url"]["auto_datetime_now"]) ? $config["defaults_values"]["url"]["auto_datetime_now"] : false );
+		$container->setParameter("cyberomulus_site_map_generator.defaults_values.url.last_modification_now", 
+			isset($config["defaults_values"]["url"]["last_modification_now"]) ? $config["defaults_values"]["url"]["last_modification_now"] : false );
 		$container->setParameter("cyberomulus_site_map_generator.defaults_values.url.change_frequence",
 			isset($config["defaults_values"]["url"]["change_frequence"])  ? $config["defaults_values"]["url"]["change_frequence"] : null );
 		$container->setParameter("cyberomulus_site_map_generator.defaults_values.url.priority",
