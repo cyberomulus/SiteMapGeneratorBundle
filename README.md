@@ -67,6 +67,7 @@ cyberomulus_sitemapgenerator:
 ## See too
 
 * [Create your first sitemap](Resources/doc/01_create_sitemap.md)
+* [How to configure default values?](Resources/doc/05_config_default_values.md)
 * [Commands list](Resources/doc/10_commands.md)
 
 ## Want more ?

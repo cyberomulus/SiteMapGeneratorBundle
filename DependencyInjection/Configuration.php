@@ -33,7 +33,7 @@ class Configuration implements ConfigurationInterface
 						->info("Set the defaults values on url entries")
 							->children()
 								->booleanNode('auto_connect')
-									->info('true for set a datetime at now if is null')
+									->info('true for set a datetime at now if is null (false by default)')
 									->defaultFalse()
 								->end()
 								->enumNode('change_frequence')
