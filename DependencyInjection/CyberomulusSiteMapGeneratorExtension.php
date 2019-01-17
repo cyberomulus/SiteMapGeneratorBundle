@@ -26,7 +26,7 @@ class CyberomulusSiteMapGeneratorExtension extends Extension
 	 */
 	public function load(array $configs, ContainerBuilder $container)
 		{
-		// loas configuration
+		// load configuration
 		$configuration = new Configuration();
 		$config = $this->processConfiguration($configuration, $configs);
 			

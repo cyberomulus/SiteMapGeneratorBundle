@@ -78,7 +78,8 @@ You can request a new function in [issue](https://github.com/cyberomulus/SiteMap
 
 #### Contribute
 
-Your pull requests are welcome!!
+Your pull requests are welcome!!  
+The documentation for developers is [here](Resources/doc/20_dev.md)
 
 ## Contributors
 
