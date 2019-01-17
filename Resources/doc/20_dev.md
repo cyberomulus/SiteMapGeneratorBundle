@@ -20,22 +20,17 @@
 
 ```yaml
 cyberomulus_site_map_generator:
-	defaults_values:
-		url:
-			last_modification_now
-			change_frequence
-			priority
-		image: 
-			title
-			caption
-			license		
+    defaults_values:
+        url:
+            last_modification_now
+            change_frequence
+            priority
+        image: 
+            title
+            caption
+            license
 ```
 
 ## Git branches
 
 The project use git flow.
-
-
-- liste service, route, paraetre, ...
-
-- branche git
