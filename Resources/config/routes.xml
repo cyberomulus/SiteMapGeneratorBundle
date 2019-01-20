@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<routes xmlns="http://symfony.com/schema/routing"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
+
+    <route id="cyberomulus_site_map_generator_index" path="/sitemap.xml">
+    	<default key="_controller">cyberomulus_site_map_generator.site_map.controller::displayIndex</default>
+    </route>
+    
+    <route id="cyberomulus_site_map_generator_site_map" path="/sitemap_{name}.xml">
+    	<default key="_controller">cyberomulus_site_map_generator.site_map.controller::displaySiteMap</default>
+    </route>
+</routes>
