@@ -1,4 +1,4 @@
-# CHANGELOG
+# Changelog
 
 ### 1.1 (2019-xx-xx)
 
