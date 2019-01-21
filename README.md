@@ -58,7 +58,7 @@ You must import the bundle routes.
 For this, copy these lines into your routes configuration file:
 
 ```yaml
-# config/routes.yaml
+# config/routes/cyberomulus_site_map_generator.yaml
 
 cyberomulus_sitemapgenerator:
     resource: '@CyberomulusSiteMapGeneratorBundle/Resources/config/routes.xml'
