@@ -18,6 +18,8 @@ namespace Cyberomulus\SiteMapGeneratorBundle;
 interface SiteMapProvider
 	{
 	/**
+	 * The name must be URL friendly (use snake_case)
+	 *
 	 * @return	string		The sitemap name (used for the route name and on url)
 	 * 
 	 * @author	Brack Romain <http://www.cyberomulus.me>
