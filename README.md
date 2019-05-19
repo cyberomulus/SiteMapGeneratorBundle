@@ -42,7 +42,7 @@ class AppKernel extends Kernel
     {
         $bundles = array(
             // ...
-            new cyberomulus\phpToolboxBundle\CyberomulusSiteMapGeneratorBundle,
+            new Cyberomulus\SiteMapGeneratorBundle\CyberomulusSiteMapGeneratorBundle(),
         );
 
         // ...

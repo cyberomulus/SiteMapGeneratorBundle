@@ -19,7 +19,7 @@ class BlogController extends AbstractController implements SiteMapProvider
 ```
 
 3 methods must be implemented:
-* `getSiteMapName(): string`: must return the sitemap name (used for the route name and on url)
+* `getSiteMapName(): string`: must return the sitemap name (used for the route name and on url). The name must be URL friendly (use snake_case, see [issue #14](https://github.com/cyberomulus/SiteMapGeneratorBundle/issues/14)) 
 * `getSiteMapLastModification()`: must return the last modification, null for not use
 * `getUrlEntries(): \Iterator`: must return an array of `Cyberomulus\SiteMapGenerator\Entries\URLEntry`
 
