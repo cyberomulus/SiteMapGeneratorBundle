@@ -1,6 +1,6 @@
 # Changelog
 
-### x.x (xxx-xx-xx)
+### 1.2 (2019-05-19)
 
 * Remove support for Symfony 3.4
 * Doc correction (resolve [issue #14](https://github.com/cyberomulus/SiteMapGeneratorBundle/issues/14))
